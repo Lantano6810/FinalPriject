@@ -1,0 +1,28 @@
+.home-hero {
+    width: 100vw;
+    height: 450px; /* Можно изменить по желанию */
+    background: url("../assets/HomeHero.png") no-repeat center center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    padding-left: 80px; /* Приближаем текст к левому краю */
+}
+
+.home-hero-content {
+    max-width: 600px;
+}
+
+.home-hero-title {
+    font-size: 46px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 15px;
+    margin-top: 40px;
+}
+
+.home-hero-subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    color: white;
+    line-height: 1.5;
+}

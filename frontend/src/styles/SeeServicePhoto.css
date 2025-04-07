@@ -1,0 +1,95 @@
+.photo-viewer-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 30px 60px; /* ✅ Добавили отступы по бокам */
+    text-align: center;
+    background-color: #132043;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.main-photo-box {
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.main-photo {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.main-photo:hover {
+    transform: scale(1.02);
+}
+
+.thumbnail-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.thumbnail {
+    width: 100px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.2s, border 0.2s;
+    border: 2px solid transparent;
+}
+
+.thumbnail:hover,
+.thumbnail.active {
+    transform: scale(1.05);
+    border: 2px solid #12758F;
+}
+
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 28px;
+    background-color: #1588A6;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    z-index: 2;
+    padding: 0;
+}
+
+.nav-button.left {
+    left: 20px; /* ✅ Отступ слева */
+}
+
+.nav-button.right {
+    right: 20px; /* ✅ Отступ справа */
+}
+
+.nav-button:hover {
+    background-color: #12758F;
+}
+
+
+.no-photos-message {
+    text-align: center;
+    font-size: 18px;
+    color: white;
+    margin-top: 20px;
+}

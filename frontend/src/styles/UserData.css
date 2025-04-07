@@ -1,0 +1,139 @@
+.user-data-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 24px;
+    background-color: #b0bbc7;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); /* 💥 Более выраженная тень */
+}
+
+.user-data-container h2 {
+    margin-bottom: 20px;
+    color: #12758F;
+}
+
+label {
+    display: block;
+    margin: 12px 0 4px;
+    font-weight: 500;
+    color: #12758F;
+}
+
+input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.name-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    color: #0e5e72;
+}
+
+.name-display button {
+    padding: 6px 12px;
+    font-size: 14px;
+    background-color: #12758F;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.name-display button:hover {
+    background-color: #0e5e72;
+}
+
+.edit-name-block {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+    align-items: center;
+}
+
+.edit-name-block input {
+    flex: 1;
+}
+
+.edit-name-block button {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.edit-name-block button:first-of-type {
+    background-color: #12758F;
+    color: white;
+}
+
+.edit-name-block button:last-of-type {
+    background-color: #ccc;
+    color: #333;
+}
+
+.change-password-btn {
+    padding: 10px 16px;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    background-color: #12758F;
+    color: white;
+    cursor: pointer;
+}
+
+.change-password-btn:hover {
+    background-color: #0e5e72;
+}
+
+.change-password-form {
+    margin-top: 20px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.button-group button {
+    flex: 1;
+    padding: 10px;
+    font-size: 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.button-group button:first-of-type {
+    background-color: #12758F;
+    color: white;
+}
+
+.button-group button:last-of-type {
+    background-color: #ccc;
+    color: #333;
+}
+
+.error-message {
+    color: #d0342c;
+    font-weight: 500;
+    margin-top: 16px;
+}
+
+.success-message {
+    color: #2e7d32;
+    font-weight: 500;
+    margin-top: 16px;
+}

@@ -1,0 +1,47 @@
+.service-page .navbar {
+    background-color: white;
+    height: 75px;
+}
+
+.service-container {
+    padding: 20px;
+}
+
+/* Вкладки на всю ширину */
+.service-container .tabs {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+.service-container .tab {
+    flex: 1;
+    text-align: center;
+    padding: 15px 0;
+    background-color: #f0f0f0;
+    color: #132043;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.service-container .tab:not(.active):hover {
+    background-color: #e0e0e0;
+}
+
+.service-container .tab.active {
+    background-color: #132043;
+    color: #fff;
+    border-bottom: none;
+}
+
+/* ❌ Убрали все границы */
+.service-container .tab-content {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 0 0 8px 8px;
+}

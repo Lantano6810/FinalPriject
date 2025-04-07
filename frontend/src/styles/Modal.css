@@ -1,0 +1,176 @@
+/* 🌑 Затемнение фона */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 700px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    animation: slideDown 0.3s ease-in-out;
+    text-align: left;
+}
+
+/* 🧾 Заголовок */
+.modal-content h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+    color: #132043;
+}
+
+/* 🔘 Метки */
+.modal-content label {
+    display: block;
+    font-size: 14px;
+    margin: 12px 0 4px;
+    font-weight: 500;
+}
+
+/* 🖊️ Поля ввода */
+.modal-content input,
+.modal-content textarea {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+/* ✏️ Текстовая область */
+.modal-content textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* ✅ Кнопки */
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 24px;
+    gap: 10px;
+}
+
+.btn {
+    padding: 10px 16px;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    min-width: 120px;
+    text-align: center;
+}
+
+/* 🔵 Кнопка "Записаться" */
+.confirm-btn {
+    background: #12758F;
+    color: white;
+}
+
+.confirm-btn:hover {
+    background: #0e5e72;
+}
+
+/* ⚪ Кнопка "Отмена" */
+.cancel-btn {
+    background: #e0e0e0;
+    color: #333;
+}
+
+.cancel-btn:hover {
+    background: #ccc;
+}
+
+/* 🌟 Анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-15px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* 🔽 Кастомный селект */
+.custom-select {
+    position: relative;
+    width: 100%;
+}
+
+.select-options {
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 10;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.select-option {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.select-option:hover {
+    background-color: #f7f7f7;
+}
+
+.select-option.no-match {
+    color: #888;
+    cursor: default;
+    text-align: center;
+    padding: 10px;
+}
+
+/* 📐 Сетки */
+.row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.two-columns > div {
+    flex: 1;
+}
+
+.three-columns > div {
+    flex: 1;
+}
+
+/* 📅 Текст с датой записи */
+.appointment-date-text {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 16px;
+    padding: 10px 12px;
+    background-color: #f1f9ff;
+    border: 1px solid #cce4f6;
+    border-radius: 6px;
+    color: #0e5e72;
+}

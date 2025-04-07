@@ -1,0 +1,130 @@
+/* Контейнер */
+.applications-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.applications-container h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* Дейтпикер */
+.datepicker {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 0px; /* Убираем нижний отступ */
+    outline: none;
+}
+
+/* Таблица */
+.application-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.application-table thead {
+    background-color: #12758F;
+    color: white;
+}
+
+.application-table th,
+.application-table td {
+    padding: 12px 16px;
+    border: 1px solid #e0e0e0;
+    text-align: left;
+    font-size: 15px;
+}
+
+.application-table tbody tr:hover {
+    background-color: #f5faff;
+}
+
+/* Сообщение при отсутствии заявок */
+.applications-container p {
+    font-size: 16px;
+    margin-top: 20px;
+    color: #666;
+}
+
+/* Кастомный инпут для календаря */
+.custom-date-input {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+    margin-bottom: 0px; /* убрали нижний отступ */
+    width: 180px;
+    justify-content: flex-start;
+}
+
+.custom-date-input:hover {
+    border-color: #12758F;
+    background-color: #f0f8ff;
+}
+
+.calendar-icon {
+    color: #12758F;
+    font-size: 18px;
+}
+
+/* Блок с лимитом */
+.daily-limit-text {
+    font-size: 16px;
+    margin-top: 20px; /* увеличенный отступ сверху */
+    color: #333;
+    font-weight: 500;
+    background-color: #f3f8fb;
+    padding: 10px 16px;
+    border-left: 4px solid #12758F;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+.date-limit-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 24px; /* ✅ добавлен отступ снизу */
+}
+
+.application-table th:nth-child(1),
+.application-table td:nth-child(1) {
+    width: 140px; /* Марка */
+}
+
+.application-table th:nth-child(2),
+.application-table td:nth-child(2) {
+    width: 180px; /* Модель */
+}
+
+.application-table th:nth-child(3),
+.application-table td:nth-child(3) {
+    width: 100px; /* Год */
+    text-align: center;
+}
+
+.application-table th:nth-child(4),
+.application-table td:nth-child(4) {
+    width: 300px; /* Описание */
+}
+
+.application-table th:nth-child(5),
+.application-table td:nth-child(5) {
+    width: 200px; /* Статус */
+}

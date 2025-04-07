@@ -1,0 +1,131 @@
+.upload-container {
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+}
+
+.preview-container {
+    margin-top: 15px;
+}
+
+.preview-image {
+    width: 180px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.preview-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.upload-btn {
+    margin-top: 12px;
+    padding: 10px 24px;
+    background-color: #1588A6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.upload-btn:hover {
+    background-color: #12758F;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: #1588A6;
+    margin-top: 12px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #28a745;
+    border-radius: 5px;
+    transition: width 0.3s ease;
+}
+
+.photos-header {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.edit-toggle-btn {
+    padding: 6px 14px;
+    background-color: #1588A6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.edit-toggle-btn:hover {
+    background-color: #12758F;
+}
+
+.photo-block {
+    margin-top: 25px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 2px solid #dee2e6;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.photo-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.photo-item img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.photo-item img:hover {
+    transform: scale(1.02);
+}
+
+.delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #12758F;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.delete-btn:hover {
+    background-color: #1588A6;
+    transform: scale(1.1);
+}

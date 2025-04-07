@@ -1,0 +1,316 @@
+/* Container */
+/* Container */
+.service-book-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 24px;
+    background-color: #b0bbc7;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); /* 💥 Более выраженная тень */
+}
+
+.service-book-container h2 {
+    margin-bottom: 20px;
+    color: #12758F;
+    text-align: center;
+}
+
+/* Table */
+.application-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.application-table th,
+.application-table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.application-table th {
+    background-color: #12758F;
+    color: white;
+    font-weight: bold;
+}
+
+.application-table tr:hover:not(.expanded-row) {
+    background-color: #f4faff;
+    cursor: pointer;
+}
+
+/* Toggle button */
+.toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #12758F;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.toggle-btn:hover {
+    color: #0e5e72;
+    transform: scale(1.15);
+}
+
+/* Expanded row */
+.expanded-row td {
+    background-color: #f1f9ff;
+    padding: 16px;
+    border-top: 1px solid #cce4f6;
+    border-bottom: 1px solid #cce4f6;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.expanded-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.expanded-content p {
+    flex: 1 1 45%;
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Статусы */
+.status-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+}
+
+.status-badge.pending {
+    background-color: #f0ad4e;
+}
+
+.status-badge.approved {
+    background-color: #5bc0de;
+}
+
+.status-badge.completed {
+    background-color: #5cb85c;
+}
+
+.status-badge.canceled {
+    background-color: #d9534f;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.3s ease;
+    color: #12758F;
+}
+
+.toggle-btn.rotated {
+    transform: rotate(180deg);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .application-table thead {
+        display: none;
+    }
+
+    .application-table,
+    .application-table tbody,
+    .application-table tr,
+    .application-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .application-table tr {
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        padding: 10px;
+        background: #fff;
+    }
+
+    .application-table td {
+        text-align: right;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    .application-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 16px;
+        top: 12px;
+        font-weight: bold;
+        text-align: left;
+        color: #333;
+    }
+
+    .expanded-row td {
+        padding: 12px;
+    }
+}
+
+/* Анимация раскрытия */
+.expandable-row-wrapper {
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
+    max-height: 0;
+    opacity: 0;
+    padding: 0 16px;
+}
+
+.expandable-row-wrapper.expanded {
+    max-height: 500px; /* достаточно для содержимого */
+    opacity: 1;
+    padding: 16px;
+}
+
+/* Остальные стили */
+.expanded-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.expanded-content p {
+    flex: 1 1 45%;
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Кнопка редактирования */
+.edit-btn {
+    margin-top: 16px;
+    padding: 8px 14px;
+    background-color: #12758F;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.edit-btn:hover {
+    background-color: #0e5e72;
+}
+
+/* Группа кнопок "Сохранить" и "Отмена" */
+.button-group {
+    margin-top: 16px;
+    display: flex;
+    gap: 12px;
+}
+
+.button-group button {
+    padding: 8px 14px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+/* Кнопка Сохранить */
+.button-group button:first-child {
+    background-color: #28a745;
+    color: white;
+}
+
+.button-group button:first-child:hover {
+    background-color: #218838;
+}
+
+/* Кнопка Отмена */
+.button-group button:last-child {
+    background-color: #dee2e6;
+    color: #333;
+}
+
+.button-group button:last-child:hover {
+    background-color: #cbd3da;
+}
+
+/* Стили для input внутри редактируемых полей */
+.expanded-content input {
+    width: 100%;
+    padding: 8px 10px;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* Сообщение об успешном обновлении */
+.success-message {
+    margin-top: 12px;
+    color: #2e7d32;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+/* Сообщение об ошибке */
+.error-message {
+    margin-top: 12px;
+    color: #d9534f;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+/* Индикатор сохранения */
+.loading-indicator {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #007bff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.loading-indicator::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    border: 2px solid #007bff;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

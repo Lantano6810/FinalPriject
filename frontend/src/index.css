@@ -1,0 +1,10 @@
+.custom-btn {
+    color: white;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.custom-btn:hover {
+    border-color: white;
+    color: white;
+}

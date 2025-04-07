@@ -1,0 +1,71 @@
+.order-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 30px;
+}
+
+.service-info-box {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 элемента в ряд */
+    gap: 20px;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    padding: 25px;
+}
+
+.service-info-box h3 {
+    grid-column: 1 / -1;
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.service-info-item {
+    background: #f5f5f5;
+    padding: 12px 16px;
+    border-radius: 8px;
+}
+
+.service-info-item.full-width {
+    grid-column: 1 / -1;
+}
+
+.service-info-item strong {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.booking-button-box {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.book-btn {
+    background-color: #12758F;
+    color: white;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.book-btn:hover {
+    background-color: #0e5e72;
+}
+
+@media (max-width: 1024px) {
+    .service-info-box {
+        grid-template-columns: repeat(2, 1fr); /* адаптивно: 2 в ряд */
+    }
+}
+
+@media (max-width: 600px) {
+    .service-info-box {
+        grid-template-columns: 1fr; /* адаптивно: 1 в ряд */
+    }
+}

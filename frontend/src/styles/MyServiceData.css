@@ -1,0 +1,112 @@
+.service-data-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.service-title {
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.service-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.service-info label {
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.service-info input,
+.service-info textarea {
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.service-info span {
+    padding: 6px 0;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.edit-buttons {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.btn-edit,
+.btn-save,
+.btn-cancel {
+    margin: 0 8px;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn-edit {
+    background-color: #1588A6;
+    color: white;
+}
+
+.btn-save {
+    background-color: #1588A6;
+    color: white;
+}
+
+.btn-cancel {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-edit:hover {
+    background-color: #12758F;
+}
+
+.btn-save:hover {
+    background-color: #12758F;
+}
+
+.btn-cancel:hover {
+    background-color: #c82333;
+}
+
+.no-access {
+    color: #dc3545;
+    font-weight: 500;
+    margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.service-title input {
+    width: 80%;
+    padding: 10px 12px;
+    font-size: 20px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+}

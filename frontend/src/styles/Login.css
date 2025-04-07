@@ -1,0 +1,90 @@
+/* 🏠 Основной контейнер */
+.login-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    min-height: 100vh; /* Минимальная высота по контенту, но не меньше высоты экрана */
+    padding: 50px;
+    gap: 80px;
+    background: url("../assets/login-bg.png") no-repeat center center;
+    background-size: cover;
+}
+
+
+/* 📌 Текстовый блок слева */
+.login-text {
+    max-width: 450px;
+    text-align: left;
+    margin-top: 130px;
+}
+
+.login-title {
+    font-size: 40px;
+    font-weight: 700;
+    color: white;
+}
+
+.login-description {
+    font-size: 18px;
+    font-weight: 400;
+    color: white;
+    margin-top: 15px;
+}
+
+/* 📌 Форма входа справа */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    margin-top: 70px;
+}
+
+.login-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 100%;
+}
+
+/* 🔵 Заголовок формы */
+.login-header {
+    color: #12758F;
+}
+
+/* 🎯 Input */
+.rounded-input {
+    border-radius: 10px;
+}
+
+/* 🔵 Кнопка Войти */
+.login-button {
+    background-color: #12758F;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+    border: none;
+}
+
+.login-button:hover {
+    background-color: #0e5e72;
+}
+
+/* 🔵 Ссылка на регистрацию */
+.small-text {
+    font-size: 0.9rem;
+}
+
+.register-link {
+    color: #12758F;
+    font-weight: bold;
+}
+
+.register-link:hover {
+    text-decoration: underline;
+}
