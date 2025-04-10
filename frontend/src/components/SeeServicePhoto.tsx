@@ -14,6 +14,7 @@ const SeeServicePhoto = () => {
     const [photos, setPhotos] = useState<Photo[]>([]);
     const [selectedPhoto, setSelectedPhoto] = useState<string>("");
     const [currentIndex, setCurrentIndex] = useState<number>(0);
+    const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
 
     useEffect(() => {
         const fetchPhotos = async () => {
@@ -37,6 +38,25 @@ const SeeServicePhoto = () => {
 
         fetchPhotos();
     }, [serviceId]);
+
+    // 🔑 Обработка ESC
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "Escape") {
+                setIsFullscreen(false);
+            }
+        };
+
+        if (isFullscreen) {
+            document.addEventListener("keydown", handleKeyDown);
+        } else {
+            document.removeEventListener("keydown", handleKeyDown);
+        }
+
+        return () => {
+            document.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [isFullscreen]);
 
     const goToNextPhoto = () => {
         if (photos.length === 0) return;
@@ -63,7 +83,12 @@ const SeeServicePhoto = () => {
                             <button className="nav-button outside left" onClick={goToPrevPhoto}>◀</button>
 
                             <div className="main-photo-box">
-                                <img src={selectedPhoto} alt="Selected" className="main-photo" />
+                                <img
+                                    src={selectedPhoto}
+                                    alt="Selected"
+                                    className="main-photo"
+                                    onClick={() => setIsFullscreen(true)}
+                                />
                             </div>
 
                             <button className="nav-button outside right" onClick={goToNextPhoto}>▶</button>
@@ -84,6 +109,13 @@ const SeeServicePhoto = () => {
                             />
                         ))}
                     </div>
+
+                    {isFullscreen && (
+                        <div className="fullscreen-overlay" onClick={() => setIsFullscreen(false)}>
+                            <img src={selectedPhoto} alt="Fullscreen" className="fullscreen-image" />
+                            <button className="close-button" onClick={() => setIsFullscreen(false)}>×</button>
+                        </div>
+                    )}
                 </>
             )}
         </div>

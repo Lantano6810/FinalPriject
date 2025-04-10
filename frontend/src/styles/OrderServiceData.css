@@ -1,7 +1,7 @@
 .order-container {
     width: 100%;
     max-width: 1200px;
-    margin: 40px auto;
+/*    margin: 40px auto;*/
     padding: 30px;
 }
 
@@ -9,7 +9,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 4 элемента в ряд */
     gap: 20px;
-    background: #fff;
+    background: #DCE2EF;
     border-radius: 10px;
     border: 1px solid #e0e0e0;
     padding: 25px;

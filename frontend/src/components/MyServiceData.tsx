@@ -71,7 +71,7 @@ const MyServiceData = () => {
                 ...editedData,
                 works: editedData.works.split(",").map((item: string) => item.trim()),
                 daily_limit: Number(editedData.daily_limit),
-                data_filled: 1, // Изменено поле data_filled на 1
+                data_filled: 1,
             };
 
             const response = await fetch(`http://localhost:3001/services/${serviceData?.service_id}`, {
@@ -100,18 +100,28 @@ const MyServiceData = () => {
 
     return (
         <div className="service-data-container">
-            <h2 className="service-title">
+            <div className="service-info full-width">
                 {editing ? (
-                    <input
-                        type="text"
-                        name="service_name"
-                        value={editedData.service_name || ""}
-                        onChange={handleChange}
-                    />
+                    <>
+                        <label>Название сервиса:</label>
+                        <input
+                            type="text"
+                            name="service_name"
+                            value={editedData.service_name || ""}
+                            onChange={handleChange}
+                        />
+                    </>
                 ) : (
-                    serviceData?.service_name
+                    <div className="service-title-row">
+                        <label>Название сервиса:</label>
+                        <span className="service-title">
+                            {serviceData?.service_name?.trim()
+                                ? serviceData.service_name
+                                : "Не указано"}
+                        </span>
+                    </div>
                 )}
-            </h2>
+            </div>
 
             <div className="service-grid">
                 <div className="service-info">

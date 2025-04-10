@@ -27,6 +27,15 @@ const UserData: React.FC = () => {
         fetchUser();
     }, [userId]);
 
+    useEffect(() => {
+        if (success) {
+            const timer = setTimeout(() => {
+                setSuccess("");
+            }, 3000);
+            return () => clearTimeout(timer);
+        }
+    }, [success]);
+
     const handleSaveName = async () => {
         setError("");
         setSuccess("");
@@ -95,7 +104,13 @@ const UserData: React.FC = () => {
             {!isEditingName ? (
                 <div className="name-display">
                     <span>{userData.name}</span>
-                    <button onClick={() => setIsEditingName(true)}>Редактировать</button>
+                    <button onClick={() => {
+                        setIsEditingName(true);
+                        setError("");
+                        setSuccess("");
+                    }}>
+                        Редактировать
+                    </button>
                 </div>
             ) : (
                 <div className="edit-name-block">
@@ -105,7 +120,13 @@ const UserData: React.FC = () => {
                         onChange={(e) => setUserData({ ...userData, name: e.target.value })}
                     />
                     <button onClick={handleSaveName}>Сохранить</button>
-                    <button onClick={() => setIsEditingName(false)}>Отмена</button>
+                    <button onClick={() => {
+                        setIsEditingName(false);
+                        setError("");
+                        setSuccess("");
+                    }}>
+                        Отмена
+                    </button>
                 </div>
             )}
 
@@ -113,7 +134,11 @@ const UserData: React.FC = () => {
             {!isChangingPassword ? (
                 <button
                     className="change-password-btn"
-                    onClick={() => setIsChangingPassword(true)}
+                    onClick={() => {
+                        setIsChangingPassword(true);
+                        setError("");
+                        setSuccess("");
+                    }}
                     style={{ marginTop: "20px" }}
                 >
                     Изменить пароль
@@ -143,7 +168,16 @@ const UserData: React.FC = () => {
 
                     <div className="button-group">
                         <button onClick={handleSavePassword}>Сохранить пароль</button>
-                        <button onClick={() => setIsChangingPassword(false)}>Отмена</button>
+                        <button onClick={() => {
+                            setIsChangingPassword(false);
+                            setOldPassword("");
+                            setNewPassword("");
+                            setConfirmPassword("");
+                            setError("");
+                            setSuccess("");
+                        }}>
+                            Отмена
+                        </button>
                     </div>
                 </div>
             )}

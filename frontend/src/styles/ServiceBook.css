@@ -309,6 +309,12 @@
     animation: spin 0.8s linear infinite;
 }
 
+.application-table th:nth-child(5),
+.application-table td:nth-child(5) {
+    text-align: center;
+}
+
+
 @keyframes spin {
     to {
         transform: rotate(360deg);
