@@ -16,11 +16,21 @@ type PhotoMap = {
     [serviceId: number]: string[];
 };
 
+const SERVICES_PER_PAGE = 12;
+
 const AllServiceList = () => {
     const [services, setServices] = useState<Service[]>([]);
+    const [filteredServices, setFilteredServices] = useState<Service[]>([]);
     const [photos, setPhotos] = useState<PhotoMap>({});
     const [currentPhotoIndex, setCurrentPhotoIndex] = useState<{ [id: number]: number }>({});
     const [hoveredServiceId, setHoveredServiceId] = useState<number | null>(null);
+
+    const [searchName, setSearchName] = useState("");
+    const [selectedCity, setSelectedCity] = useState("");
+    const [searchWorks, setSearchWorks] = useState("");
+
+    const [currentPage, setCurrentPage] = useState(1);
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -29,9 +39,9 @@ const AllServiceList = () => {
                 const response = await fetch("http://localhost:3001/services");
                 if (!response.ok) throw new Error(`Ошибка загрузки: ${response.status}`);
                 const data = await response.json();
-
                 const filtered = data.filter((service: Service) => service.data_filled === 1);
                 setServices(filtered);
+                setFilteredServices(filtered);
             } catch (error) {
                 console.error("Ошибка загрузки сервисов:", error);
             }
@@ -76,15 +86,100 @@ const AllServiceList = () => {
         return () => clearInterval(interval);
     }, [hoveredServiceId, photos]);
 
+    useEffect(() => {
+        let filtered = services;
+
+        if (searchName.trim()) {
+            filtered = filtered.filter((s) =>
+                s.service_name.toLowerCase().includes(searchName.toLowerCase())
+            );
+        }
+
+        if (selectedCity) {
+            filtered = filtered.filter((s) => s.city === selectedCity);
+        }
+
+        if (searchWorks.trim()) {
+            filtered = filtered.filter((s) =>
+                (s.works || []).some((work) =>
+                    work.toLowerCase().includes(searchWorks.toLowerCase())
+                )
+            );
+        }
+
+        setFilteredServices(filtered);
+        setCurrentPage(1); // Сброс страницы при фильтрации
+    }, [searchName, selectedCity, searchWorks, services]);
+
+    const getCities = () => {
+        const citySet = new Set(services.map((s) => s.city));
+        return Array.from(citySet);
+    };
+
     const truncateText = (text: string, maxLength: number) => {
         return text.length > maxLength ? text.slice(0, maxLength) + "…" : text;
     };
 
+    const resetAllFilters = () => {
+        setSearchName("");
+        setSelectedCity("");
+        setSearchWorks("");
+    };
+
+    const totalPages = Math.ceil(filteredServices.length / SERVICES_PER_PAGE);
+    const paginatedServices = filteredServices.slice(
+        (currentPage - 1) * SERVICES_PER_PAGE,
+        currentPage * SERVICES_PER_PAGE
+    );
+
     return (
         <div className="all-service-list">
             <h2 className="all-service-title">Все автосервисы</h2>
+
+            {/* 🔍 Фильтры */}
+            <div className="filters">
+                <div className="filter-wrapper">
+                    <input
+                        type="text"
+                        placeholder="Поиск по названию"
+                        value={searchName}
+                        onChange={(e) => setSearchName(e.target.value)}
+                    />
+                    {searchName && (
+                        <span className="clear-icon" onClick={() => setSearchName("")}>✖</span>
+                    )}
+                </div>
+
+                <div className="filter-wrapper">
+                    <select value={selectedCity} onChange={(e) => setSelectedCity(e.target.value)}>
+                        <option value="">Все города</option>
+                        {getCities().map((city) => (
+                            <option key={city} value={city}>{city}</option>
+                        ))}
+                    </select>
+                    {selectedCity && (
+                        <span className="clear-icon" onClick={() => setSelectedCity("")}>✖</span>
+                    )}
+                </div>
+
+                <div className="filter-wrapper">
+                    <input
+                        type="text"
+                        placeholder="Поиск по услугам"
+                        value={searchWorks}
+                        onChange={(e) => setSearchWorks(e.target.value)}
+                    />
+                    {searchWorks && (
+                        <span className="clear-icon" onClick={() => setSearchWorks("")}>✖</span>
+                    )}
+                </div>
+
+                <button className="clear-all-btn" onClick={resetAllFilters}>Сбросить все</button>
+            </div>
+
+            {/* 📋 Список */}
             <div className="service-grid">
-                {services.map((service) => {
+                {paginatedServices.map((service) => {
                     const servicePhotos = photos[service.service_id] || [];
                     const currentIndex = currentPhotoIndex[service.service_id] || 0;
                     const imageSrc = servicePhotos.length > 0 ? servicePhotos[currentIndex] : defaultServiceImage;
@@ -113,6 +208,21 @@ const AllServiceList = () => {
                     );
                 })}
             </div>
+
+            {/* 🔁 Пагинация */}
+            {totalPages > 1 && (
+                <div className="pagination-container">
+                    {Array.from({ length: totalPages }, (_, i) => (
+                        <button
+                            key={i + 1}
+                            className={`pagination-number ${currentPage === i + 1 ? "active" : ""}`}
+                            onClick={() => setCurrentPage(i + 1)}
+                        >
+                            {i + 1}
+                        </button>
+                    ))}
+                </div>
+            )}
         </div>
     );
 };

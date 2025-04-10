@@ -7,7 +7,6 @@ import Modal from "../components/Modal";
 import "react-datepicker/dist/react-datepicker.css";
 import "../styles/ServiceApplications.css";
 
-// 👇 Регистрируем русскую локаль
 registerLocale("ru", ru);
 
 interface Application {
@@ -136,82 +135,84 @@ const ServiceApplications = () => {
         dailyLimit !== null && filteredApplications.length < dailyLimit;
 
     return (
-        <div className="applications-container">
-            <h2>Заявки на выбранную дату</h2>
+        <div className="service-applications">
+            <div className="applications-container-public">
+                <h2>Заявки на выбранную дату</h2>
 
-            <div className="date-limit-box">
-                <DatePicker
-                    locale="ru"
-                    selected={selectedDate}
-                    onChange={(date: Date | null) => {
-                        if (date) setSelectedDate(date);
-                    }}
-                    dateFormat="dd MMMM yyyy"
-                    customInput={<CustomDateInput />}
-                />
+                <div className="date-limit-box">
+                    <DatePicker
+                        locale="ru"
+                        selected={selectedDate}
+                        onChange={(date: Date | null) => {
+                            if (date) setSelectedDate(date);
+                        }}
+                        dateFormat="dd MMMM yyyy"
+                        customInput={<CustomDateInput />}
+                    />
 
-                {dailyLimit !== null && (
-                    <p className="daily-limit-text">Лимит записей в день: {dailyLimit}</p>
-                )}
-            </div>
-
-            {loading ? (
-                <p>Загрузка...</p>
-            ) : error ? (
-                <p>Ошибка: {error}</p>
-            ) : (
-                <div>
-                    <p>🔍 Найдено заявок: {filteredApplications.length}</p>
-
-                    {filteredApplications.length > 0 ? (
-                        <table className="application-table">
-                            <thead>
-                            <tr>
-                                <th>Марка авто</th>
-                                <th>Модель авто</th>
-                                <th>Год выпуска</th>
-                                <th>Описание работы</th>
-                                <th>Статус заявки</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {filteredApplications.map((app) => (
-                                <tr key={app.id}>
-                                    <td>{app.car_brand}</td>
-                                    <td>{app.car_model}</td>
-                                    <td>{app.car_year}</td>
-                                    <td>{app.work_description}</td>
-                                    <td>{statusTranslations[app.status] || app.status}</td>
-                                </tr>
-                            ))}
-                            </tbody>
-                        </table>
-                    ) : (
-                        <p>На выбранную дату записей нет. Вы можете записаться на обсуживание в сервис!</p>
+                    {dailyLimit !== null && (
+                        <p className="daily-limit-text">Лимит записей в день: {dailyLimit}</p>
                     )}
                 </div>
-            )}
 
-            {userRole === "car_owner" && (
-                isBookingAvailable ? (
-                    <div className="booking-button-box">
-                        <button className="btn book-btn" onClick={handleOpenModal}>
-                            Записаться в сервис
-                        </button>
-                    </div>
+                {loading ? (
+                    <p>Загрузка...</p>
+                ) : error ? (
+                    <p>Ошибка: {error}</p>
                 ) : (
-                    <p className="daily-limit-text">
-                        Запись на этот день недоступна, так как лимит заявок в день исчерпан.
-                    </p>
-                )
-            )}
+                    <div>
+                        <p>🔍 Найдено заявок: {filteredApplications.length}</p>
 
-            <Modal
-                isOpen={isModalOpen}
-                onClose={handleCloseModal}
-                onConfirm={handleConfirmBooking}
-                selectedDate={selectedDate.toISOString().split("T")[0]}
-            />
+                        {filteredApplications.length > 0 ? (
+                            <table className="application-table">
+                                <thead>
+                                    <tr>
+                                        <th>Марка авто</th>
+                                        <th>Модель авто</th>
+                                        <th>Год выпуска</th>
+                                        <th>Описание работы</th>
+                                        <th>Статус заявки</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {filteredApplications.map((app) => (
+                                        <tr key={app.id}>
+                                            <td>{app.car_brand}</td>
+                                            <td>{app.car_model}</td>
+                                            <td>{app.car_year}</td>
+                                            <td>{app.work_description}</td>
+                                            <td>{statusTranslations[app.status] || app.status}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        ) : (
+                            <p>На выбранную дату записей нет. Вы можете записаться на обслуживание в сервис!</p>
+                        )}
+                    </div>
+                )}
+
+                {userRole === "car_owner" && (
+                    isBookingAvailable ? (
+                        <div className="booking-button-box">
+                            <button className="btn book-btn" onClick={handleOpenModal}>
+                                Записаться в сервис
+                            </button>
+                        </div>
+                    ) : (
+                        <p className="daily-limit-text">
+                            Запись на этот день недоступна, так как лимит заявок в день исчерпан.
+                        </p>
+                    )
+                )}
+
+                <Modal
+                    isOpen={isModalOpen}
+                    onClose={handleCloseModal}
+                    onConfirm={handleConfirmBooking}
+                    selectedDate={selectedDate.toISOString().split("T")[0]}
+                />
+            </div>
         </div>
     );
 };

@@ -15,7 +15,6 @@ const ServicePage = () => {
 
     return (
         <div className="service-container">
-            {/* Вкладки */}
             <div className="tabs">
                 <button
                     className={activeTab === "applications" ? "tab active" : "tab"}

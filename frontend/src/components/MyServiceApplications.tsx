@@ -181,10 +181,9 @@ const MyServiceApplications = () => {
             ) : error ? (
                 <p className="error">{error}</p>
             ) : applications.length === 0 ? (
-                <p>К сожалению, в ваш сервис еще не поступали заявки на обслуживание.</p>
+                <h5>К сожалению, в ваш сервис еще не поступали заявки на обслуживание.</h5>
             ) : (
                 <>
-                    {/* Вкладки по годам/месяцам/дням */}
                     <div className="date-tabs">
                         {Object.keys(dateMap).map((year) => (
                             <button

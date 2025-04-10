@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 import "../styles/MyServiceData.css";
 
+const kazakhstanCities = [
+    "Алматы", "Астана", "Шымкент", "Актобе", "Караганда",
+    "Тараз", "Уральск", "Павлодар", "Семей", "Костанай",
+    "Кызылорда", "Актау", "Атырау", "Петропавловск", "Экибастуз",
+    "Темиртау", "Талдыкорган", "Кокшетау", "Жезказган", "Риддер"
+];
+
 const MyServiceData = () => {
     const [serviceData, setServiceData] = useState<any>(null);
     const [loading, setLoading] = useState(true);
@@ -50,7 +57,7 @@ const MyServiceData = () => {
         });
     };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setEditedData((prev: any) => ({
             ...prev,
@@ -64,6 +71,7 @@ const MyServiceData = () => {
                 ...editedData,
                 works: editedData.works.split(",").map((item: string) => item.trim()),
                 daily_limit: Number(editedData.daily_limit),
+                data_filled: 1, // Изменено поле data_filled на 1
             };
 
             const response = await fetch(`http://localhost:3001/services/${serviceData?.service_id}`, {
@@ -94,7 +102,12 @@ const MyServiceData = () => {
         <div className="service-data-container">
             <h2 className="service-title">
                 {editing ? (
-                    <input type="text" name="service_name" value={editedData.service_name || ""} onChange={handleChange} />
+                    <input
+                        type="text"
+                        name="service_name"
+                        value={editedData.service_name || ""}
+                        onChange={handleChange}
+                    />
                 ) : (
                     serviceData?.service_name
                 )}
@@ -104,16 +117,28 @@ const MyServiceData = () => {
                 <div className="service-info">
                     <label>Город:</label>
                     {editing ? (
-                        <input type="text" name="city" value={editedData.city || ""} onChange={handleChange} />
+                        <select name="city" value={editedData.city || ""} onChange={handleChange}>
+                            <option value="">Выберите город</option>
+                            {kazakhstanCities.map((city) => (
+                                <option key={city} value={city}>
+                                    {city}
+                                </option>
+                            ))}
+                        </select>
                     ) : (
-                        <span>{serviceData?.city}</span>
+                        <span>{serviceData?.city || "Не указан"}</span>
                     )}
                 </div>
 
                 <div className="service-info">
                     <label>Адрес:</label>
                     {editing ? (
-                        <input type="text" name="address" value={editedData.address || ""} onChange={handleChange} />
+                        <input
+                            type="text"
+                            name="address"
+                            value={editedData.address || ""}
+                            onChange={handleChange}
+                        />
                     ) : (
                         <span>{serviceData?.address || "Не указан"}</span>
                     )}
@@ -122,7 +147,11 @@ const MyServiceData = () => {
                 <div className="service-info full-width">
                     <label>Услуги оказываемые автосервисом:</label>
                     {editing ? (
-                        <textarea name="works" value={editedData.works || ""} onChange={handleChange} />
+                        <textarea
+                            name="works"
+                            value={editedData.works || ""}
+                            onChange={handleChange}
+                        />
                     ) : (
                         <span>{serviceData?.works?.join(", ") || "Не указаны"}</span>
                     )}
@@ -131,25 +160,40 @@ const MyServiceData = () => {
                 <div className="service-info">
                     <label>Время начала работы:</label>
                     {editing ? (
-                        <input type="time" name="time_start" value={editedData.time_start || ""} onChange={handleChange} />
+                        <input
+                            type="time"
+                            name="time_start"
+                            value={editedData.time_start || ""}
+                            onChange={handleChange}
+                        />
                     ) : (
-                        <span>{serviceData?.time_start}</span>
+                        <span>{serviceData?.time_start || "Не указано"}</span>
                     )}
                 </div>
 
                 <div className="service-info">
                     <label>Время окончания работы:</label>
                     {editing ? (
-                        <input type="time" name="time_end" value={editedData.time_end || ""} onChange={handleChange} />
+                        <input
+                            type="time"
+                            name="time_end"
+                            value={editedData.time_end || ""}
+                            onChange={handleChange}
+                        />
                     ) : (
-                        <span>{serviceData?.time_end}</span>
+                        <span>{serviceData?.time_end || "Не указано"}</span>
                     )}
                 </div>
 
                 <div className="service-info">
                     <label>Лимит заявок в день:</label>
                     {editing ? (
-                        <input type="number" name="daily_limit" value={editedData.daily_limit || 0} onChange={handleChange} />
+                        <input
+                            type="number"
+                            name="daily_limit"
+                            value={editedData.daily_limit || 0}
+                            onChange={handleChange}
+                        />
                     ) : (
                         <span>{serviceData?.daily_limit}</span>
                     )}
@@ -160,11 +204,17 @@ const MyServiceData = () => {
                 {userId && serviceData?.user?.id?.toString() === userId ? (
                     editing ? (
                         <>
-                            <button className="btn-save" onClick={handleSave}>Сохранить</button>
-                            <button className="btn-cancel" onClick={handleCancelEdit}>Отмена</button>
+                            <button className="btn-save" onClick={handleSave}>
+                                Сохранить
+                            </button>
+                            <button className="btn-cancel" onClick={handleCancelEdit}>
+                                Отмена
+                            </button>
                         </>
                     ) : (
-                        <button className="btn-edit" onClick={handleEditClick}>Редактировать</button>
+                        <button className="btn-edit" onClick={handleEditClick}>
+                            Редактировать
+                        </button>
                     )
                 ) : (
                     <p className="no-access">Вы не можете редактировать этот сервис.</p>

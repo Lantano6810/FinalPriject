@@ -15,7 +15,7 @@ export class Service {
   @PrimaryGeneratedColumn()
   service_id: number;
 
-  @Column({ nullable: true }) // ⛑ Временно делаем user_id nullable
+  @Column({ nullable: true })
   user_id: number;
 
   @OneToOne(() => User, (user) => user.service, {

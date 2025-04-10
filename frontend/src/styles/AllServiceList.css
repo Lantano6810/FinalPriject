@@ -3,46 +3,88 @@
     margin: 40px auto;
     padding: 20px;
     max-width: 1200px;
-    margin-top: 70px;
+    margin-top: 20px;
 }
 
 .all-service-title {
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 30px;
-    text-align: left; /* Выравниваем текст по левому краю */
-    width: 100%; /* Растягиваем на всю ширину */
-    padding-left: 20px; /* Отступ слева */
+    text-align: left;
+    width: 100%;
+    padding-left: 20px;
 }
 
-/* 🔹 Фильтры и поиск */
+/* 🔹 Фильтры */
 .filters {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 15px;
-    margin-bottom: 20px;
-    padding: 10px;
+    margin-bottom: 25px;
+    padding: 15px;
     background: #f8f9fa;
     border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-/* Общие стили для всех инпутов */
-.filter-input, .search-input {
-    padding: 10px;
-    font-size: 16px;
+/* Обертка для каждого фильтра */
+.filter-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+/* Инпуты и селекты */
+.filter-wrapper input,
+.filter-wrapper select {
+    padding: 10px 36px 10px 12px;
+    font-size: 15px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    width: 220px;
+    width: 200px;
     outline: none;
     transition: border-color 0.3s ease-in-out;
 }
 
-.filter-input:focus, .search-input:focus {
+.filter-wrapper input:focus,
+.filter-wrapper select:focus {
     border-color: #12758F;
 }
 
-/* Сетка сервисов */
+/* ✖ внутри инпута */
+.clear-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.clear-icon:hover {
+    color: #12758F;
+}
+
+/* Кнопка сброса всех фильтров */
+.clear-all-btn {
+    padding: 10px 20px;
+    font-size: 15px;
+    background-color: #12758F;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.clear-all-btn:hover {
+    background-color: #0e5e72;
+}
+
+/* 🔹 Сетка сервисов */
 .service-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -53,7 +95,7 @@
 .service-card {
     background: white;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 15px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.3s ease;
     width: 100%;
@@ -105,7 +147,6 @@
     background-color: #ddd;
 }
 
-/* Активная страница */
 .pagination-number.active {
     background-color: #12758F;
     color: white;

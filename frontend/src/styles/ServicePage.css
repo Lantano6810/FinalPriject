@@ -18,7 +18,7 @@
     flex: 1;
     text-align: center;
     padding: 15px 0;
-    background-color: #f0f0f0;
+    background-color: #DCE2EF;
     color: #132043;
     border: none;
     font-size: 16px;
@@ -30,7 +30,8 @@
 }
 
 .service-container .tab:not(.active):hover {
-    background-color: #e0e0e0;
+    background-color: #132043;
+    color: white;
 }
 
 .service-container .tab.active {
